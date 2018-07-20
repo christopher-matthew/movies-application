@@ -1,39 +1,19 @@
 {
   "movies": [
     {
-      "title": "Casablanca",
+      "title": "movie1",
       "rating": "4",
       "id": 1
     },
     {
-      "title": "Star Wars: A New Hope",
-      "rating": "5",
+      "title": "movie2",
+      "rating": "6",
       "id": 2
     },
     {
-      "title": "test",
-      "rating": "3",
+      "title": "movie3",
+      "rating": "2",
       "id": 3
-    },
-    {
-      "title": "big mike",
-      "rating": "2",
-      "id": 4
-    },
-    {
-      "title": "scsc",
-      "rating": "scscsc",
-      "id": 5
-    },
-    {
-      "title": "hello",
-      "rating": "3",
-      "id": 6
-    },
-    {
-      "title": "test",
-      "rating": "2",
-      "id": 7
     }
   ]
 }

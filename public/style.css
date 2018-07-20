@@ -15,11 +15,6 @@ table {
     background-color: lightskyblue;
 }
 
-/*table td {*/
-    /*border: 1px solid black;*/
-
-/*}*/
-
 table th {
     border: 1px solid black;
 }
@@ -29,4 +24,7 @@ table th {
 .visible{
     visibility: visible;
 }
-
+.editCol {
+    border: none;
+    width: 90px;
+}
