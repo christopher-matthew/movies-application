@@ -1,99 +1,59 @@
 {
   "movies": [
     {
-      "title": "movieName",
-      "rating": "3",
-      "id": 1
-    },
-    {
-      "title": "onemovie",
-      "rating": "22222",
-      "id": 2
-    },
-    {
-      "title": "twomovie",
-      "rating": "33333",
-      "id": 3
-    },
-    {
-      "title": "three",
-      "rating": "8888",
-      "id": 5
-    },
-    {
-      "title": "four",
-      "rating": "4444",
+      "title": "name",
+      "rating": "4",
       "id": 6
     },
     {
-      "title": "five",
-      "rating": "555",
+      "title": "king kong ",
+      "rating": "1",
       "id": 7
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 8
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 9
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 10
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 11
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 12
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 13
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king kong ",
+      "rating": "1",
       "id": 14
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "king",
+      "rating": "8",
       "id": 15
     },
     {
-      "title": "",
-      "rating": "",
+      "title": "test",
+      "rating": "100",
       "id": 16
-    },
-    {
-      "title": "",
-      "rating": "",
-      "id": 17
-    },
-    {
-      "title": "",
-      "rating": "",
-      "id": 18
-    },
-    {
-      "title": "",
-      "rating": "",
-      "id": 19
-    },
-    {
-      "title": "",
-      "rating": "",
-      "id": 20
     }
   ]
 }
