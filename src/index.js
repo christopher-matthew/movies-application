@@ -18,6 +18,7 @@ $("#form").hide();
 
 function buildHtml(arrOfObj) {
     let html = "<table>";
+    html += `<h1>MOVIES.ORG</h1>`;
     html += "<tr>";
     html += "<th>Movie Name</th>";
     html += "<th>Movie Rating</th>";
@@ -28,11 +29,11 @@ function buildHtml(arrOfObj) {
         html += "<td>" + movie.title + "</td>";
         html += "<td>" + movie.rating + "</td>";
         html += "<td>" + movie.id + "</td>";
-        html += "<td class='editCol'><button class='editBtns'>Edit</button><a href='#'><i class='fa fa-trash-o' style='font-size:24px'></i></a></td>";
+        html += "<td class='editCol'><button class='editBtns'>Edit</button><a href='#'><i class='fa fa-trash-o deleteBtn' style='font-size:24px'></i></a></td>";
         html += "</tr>";
         html += "<tr class='editRow'>";
-        html += `<td><input data-id=${movie.id}></td>`;
-        html += "<td><input id='editRating'></td>";
+        html += `<td><input data-id=${movie.id} value=${movie.title}></td>`;
+        html += `<td><input value=${movie.rating}></td>`;
         html += "<td></td>";
         html += "<td><i class='saveBtns fa fa-save' style='font-size:24px'></i></td>";
         html += "</tr>";
@@ -40,6 +41,7 @@ function buildHtml(arrOfObj) {
     html += "</table>";
     return html;
 }
+
 
 getMovies().then((data) => $(".JsonTable").html(buildHtml(data)))
     .then(() => $(".container").hide())
@@ -52,6 +54,9 @@ getMovies().then((data) => $(".JsonTable").html(buildHtml(data)))
 
 let addMovie = () => {
     $('#test').click(() => {
+        $(".container").show();
+        $("#form").hide();
+        $(".JsonTable").hide();
         let movieTitleVal = $('#movieTitle').val();
         let movieRatingVal = $('#movieRating').val();
 
@@ -65,8 +70,11 @@ let addMovie = () => {
             body: JSON.stringify(newMovie),
         };
         fetch(url, options)
-            .then(() => {
-                getMovies().then((data) => $(".JsonTable").html(buildHtml(data)));
+            .then(() => {getMovies().then((data) => $(".JsonTable").html(buildHtml(data))).then(() => {
+                $(".JsonTable").show();
+                $("#form").show();
+                $(".container").hide();
+            })
             })
             .catch(() => console.log("error!"));
     });
@@ -78,22 +86,16 @@ let editMovie = () => {
     });
 };
 
-// let updateMoveAfterEdit = () => {
-//     $(document).on('click', '.saveBtns', (e) => {
-//         console.log($(e.currentTarget).last());
-//     });
-// };
 
 let updateMoveAfterEdit = () => {
     $(document).on('click', '.saveBtns', (e) => {
-        //console.log($(e.currentTarget).parent().parent().prev().children().last().html()); //GETS MOVIE ID
-        console.log($(e.currentTarget).parent().parent().children().first().val());
-        let movieId = parseInt($(e.currentTarget).parent().parent().prev().children().next().next().html());
-
-       // console.log($(e.currentTarget).parent().parent().prev().children().html());
-        // let editRating = $(e.currentTarget).parent().parent().prev().children().next().html();
-        let editTitle = $('#editMovie').val();
-        let editRating = $('#editRating').val();
+        $(".container").show();
+        $("#form").hide();
+        $(".JsonTable").hide();
+        let movieId = parseInt($(e.currentTarget).parent().prev().prev().prev().children().data("id"));
+        console.log(movieId);
+        let editTitle = $(e.currentTarget).parent().prev().prev().prev().children().val();
+        let editRating = $(e.currentTarget).parent().prev().prev().children().val();
         let newMovie = {title: editTitle, rating:editRating};
         let url = `/api/movies/${movieId}`;
         let options = {
@@ -103,32 +105,57 @@ let updateMoveAfterEdit = () => {
             },
             body: JSON.stringify(newMovie),
         };
+
         fetch(url, options)
             .then(() => {
-                getMovies().then((data) => $(".JsonTable").html(buildHtml(data)));
+                getMovies().then((data) => $(".JsonTable").html(buildHtml(data))).then(() => {
+                    $(".JsonTable").show();
+                    $(".container").hide();
+                    $("#form").show()
+                });
+
             })
             .catch(() => console.log("error!"));
-
-        // let newMovie = {title:editTitle, rating:editRating};
-        // let request = $.ajax({
-        //     url: "/api/movies",
-        //     method: "POST",
-        //     data: { title: editTitle, rating: editRating },
-        //     dataType: "html"
-        // });
-        //
-        // fetch(request)
-        //     .then(() => {
-        //         getMovies().then((data) => $(".JsonTable").html(buildHtml(data)));
-        //     })
-        //     .catch(() => console.log("error!"));
     });
 };
 
-updateMoveAfterEdit();
+let deleteMovie = () => {
+    $(document).on('click', '.deleteBtn', (e) => {
+        $(".container").show();
+        $("#form").hide();
+        $(".JsonTable").hide();
+        let movieId = $(e.currentTarget).parent().parent().prev().html();
+        console.log(movieId);
+        let editTitle = $(e.currentTarget).parent().prev().prev().prev().children().val();
+        let editRating = $(e.currentTarget).parent().prev().prev().children().val();
+        let newMovie = {title: editTitle, rating:editRating};
+        let url = `/api/movies/${movieId}`;
+        let options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newMovie),
+        };
+        fetch(url, options)
+            .then(() => {
+                getMovies().then((data) => $(".JsonTable").html(buildHtml(data))).then(() => {
+                    $(".JsonTable").show();
+                    $(".container").hide();
+                    $("#form").show();
+                })
+            })
+            .catch(() => console.log("error!"));
+    });
+};
 
+
+
+deleteMovie();
+updateMoveAfterEdit();
 addMovie();
 editMovie();
+
 
 
 

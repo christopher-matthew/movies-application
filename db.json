@@ -1,19 +1,9 @@
 {
   "movies": [
     {
-      "title": "movie1",
-      "rating": "4",
+      "title": "edwed",
+      "rating": "ewdwedw",
       "id": 1
-    },
-    {
-      "title": "movie2",
-      "rating": "6",
-      "id": 2
-    },
-    {
-      "title": "movie3",
-      "rating": "2",
-      "id": 3
     }
   ]
 }
