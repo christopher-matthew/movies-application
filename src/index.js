@@ -2,7 +2,6 @@
  * es6 modules and imports
  */
 
-const $ = require("jquery");
 import sayHello from './hello';
 sayHello('World');
 
@@ -17,8 +16,8 @@ $("#form").hide();
 // $("#editRating").hide();
 
 function buildHtml(arrOfObj) {
-    let html = "<table>";
-    html += `<h1>MOVIES.ORG</h1>`;
+    let html = "<div class='table-responsive-sm'><table class='table table-striped table-dark table-hover'>";
+    html += `<h1 class="text-light text-center">MOVIES.ORG</h1>`;
     html += "<tr>";
     html += "<th>Movie Name</th>";
     html += "<th>Movie Rating</th>";
@@ -38,13 +37,13 @@ function buildHtml(arrOfObj) {
         html += "<td><i class='saveBtns fa fa-save' style='font-size:24px'></i></td>";
         html += "</tr>";
     });
-    html += "</table>";
+    html += "</table></table>";
     return html;
 }
 
 
 getMovies().then((data) => $(".JsonTable").html(buildHtml(data)))
-    .then(() => $(".container").hide())
+    .then(() => $(".loading-container").hide())
     .then(() => $("#form").show())
     // .then(() => $(".editRow").hide())
     .catch((error) => {
@@ -54,7 +53,7 @@ getMovies().then((data) => $(".JsonTable").html(buildHtml(data)))
 
 let addMovie = () => {
     $('#test').click(() => {
-        $(".container").show();
+        $(".loading-container").show();
         $("#form").hide();
         $(".JsonTable").hide();
         let movieTitleVal = $('#movieTitle').val();
@@ -73,7 +72,7 @@ let addMovie = () => {
             .then(() => {getMovies().then((data) => $(".JsonTable").html(buildHtml(data))).then(() => {
                 $(".JsonTable").show();
                 $("#form").show();
-                $(".container").hide();
+                $(".loading-container").hide();
             })
             })
             .catch(() => console.log("error!"));
@@ -89,7 +88,7 @@ let editMovie = () => {
 
 let updateMoveAfterEdit = () => {
     $(document).on('click', '.saveBtns', (e) => {
-        $(".container").show();
+        $(".loading-container").show();
         $("#form").hide();
         $(".JsonTable").hide();
         let movieId = parseInt($(e.currentTarget).parent().prev().prev().prev().children().data("id"));
@@ -110,7 +109,7 @@ let updateMoveAfterEdit = () => {
             .then(() => {
                 getMovies().then((data) => $(".JsonTable").html(buildHtml(data))).then(() => {
                     $(".JsonTable").show();
-                    $(".container").hide();
+                    $(".loading-container").hide();
                     $("#form").show()
                 });
 
@@ -121,7 +120,7 @@ let updateMoveAfterEdit = () => {
 
 let deleteMovie = () => {
     $(document).on('click', '.deleteBtn', (e) => {
-        $(".container").show();
+        $(".loading-container").show();
         $("#form").hide();
         $(".JsonTable").hide();
         let movieId = $(e.currentTarget).parent().parent().prev().html();
@@ -141,7 +140,7 @@ let deleteMovie = () => {
             .then(() => {
                 getMovies().then((data) => $(".JsonTable").html(buildHtml(data))).then(() => {
                     $(".JsonTable").show();
-                    $(".container").hide();
+                    $(".loading-container").hide();
                     $("#form").show();
                 })
             })
