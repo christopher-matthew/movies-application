@@ -74,7 +74,9 @@ let addMovie = () => {
                 $(".JsonTable").show();
                 $("#form").show();
                 $(".loading-container").hide();
-                $(".heading").show()
+                $(".heading").show();
+                $("#movieTitle").val("");
+                $("#movieRating").val("")
             })
             })
             .catch(() => console.log("error!"));
