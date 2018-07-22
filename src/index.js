@@ -18,12 +18,12 @@ $(".heading").hide()
 // $("#editRating").hide();
 
 function buildHtml(arrOfObj) {
-    let html = "<div class='table-responsive-sm'><table class='table table-striped table-dark table-hover'>";
-    html += "<tr>";
+    let html = "<div class='table-responsive-sm'><table class='table table-dark table-striped table-hover'>";
+    html += "<thead class='thead-dark'><tr>";
     html += "<th>Movie Name</th>";
     html += "<th>Movie Rating</th>";
     html += "<th>Movie ID</th>";
-    html += "</tr>";
+    html += "</tr></thead>";
     arrOfObj.forEach((movie) => {
         html += "<tr>";
         html += "<td>" + movie.title + "</td>";
@@ -32,8 +32,8 @@ function buildHtml(arrOfObj) {
         html += "<td class='editCol'><button class='editBtns'>Edit</button><a href='#'><i class='fa fa-trash-o deleteBtn' style='font-size:24px'></i></a></td>";
         html += "</tr>";
         html += "<tr class='editRow displayNone'>";
-        html += `<td><input data-id=${movie.id} value=${movie.title}></td>`;
-        html += `<td><input value=${movie.rating}></td>`;
+        html += `<td><input data-id=${movie.id} value=${movie.title} class=pl-2></td>`;
+        html += `<td><input value=${movie.rating} class=pl-2></td>`;
         html += "<td></td>";
         html += "<td><i class='saveBtns fa fa-save' style='font-size:24px'></i></td>";
         html += "</tr>";

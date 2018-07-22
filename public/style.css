@@ -16,13 +16,31 @@ body {
     z-index: 1;
 }
 
-
 h1 {
     padding: 25px;
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px grey;
 }
 
+table, form {
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 1), 0 6px 30px 0 rgba(255, 255, 255, 1);
+}
+
+input, button {
+    border-radius: 5px;
+    margin-top: 7px;
+    border: none;
+}
+
+button:hover, i:hover {
+    box-shadow: 0 8px 16px 0 rgba(255,255,255,0.2);
+    cursor: pointer;
+    color: darkred;
+}
+
+i, label, #test {
+    margin-left: 12px;
+}
 
 .main {
     background: url("./img/theaterLights.png");
@@ -50,12 +68,10 @@ h1 {
     position: fixed;
     background-attachment: scroll;
     z-index: -1;
-
 }
 
 .JasonTable, #form {
     z-index: 10;
-
 }
 
 #form {
@@ -64,14 +80,6 @@ h1 {
     background-color: darkred;
 }
 
-
-table {
-    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 1), 0 6px 20px 0 rgba(255, 255, 255, 1);
-}
-
-table th {
-    border: 1px solid black;
-}
 .editRow {
     visibility: hidden;
 }
@@ -82,7 +90,7 @@ table th {
 
 .editCol {
     border: none;
-    width: 90px;
+    width: 100px;
 }
 
 #loading {
