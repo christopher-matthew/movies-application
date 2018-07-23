@@ -28,8 +28,12 @@ table, form {
 
 input, button {
     border-radius: 5px;
-    margin-top: 7px;
+    margin:8px 0;
     border: none;
+}
+
+button {
+    background: linear-gradient(to bottom, #f1f1f1 65%, #99ccff 100%);
 }
 
 button:hover, i:hover {
@@ -105,4 +109,20 @@ i, label, #test {
 
 .displayNone {
     display: none;
+}
+
+.ovlay {
+    position: relative;
+    /*padding-top: 60px;*/
+    /*max-width: 800px;*/
+    /*margin: 0 auto;*/
+}
+
+.onlay, .loading {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
 }
