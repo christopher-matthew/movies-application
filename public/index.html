@@ -9,23 +9,32 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-
     <div class="loading-container">
-        <img src="https://media.giphy.com/media/iDJuQR0UmiqOI/giphy.gif" id="loading">
+        <div class="ovlay">
+            <img src="https://media.giphy.com/media/iDJuQR0UmiqOI/giphy.gif" id="loading">
+            <div class="loading text-center">
+                <h3><i class="fa fa-spinner fa-spin" style="font-size:34px"></i>...Loading</h3>
+            </div>
+        </div>
     </div>
     <div class="main">
         <div class="container">
             <h1 class="text-center heading">MOVIES.ORG</h1>
+            <div class="text-center">
+                <!--<form class="">-->
+                    <!--<input class="pl-2" type="search" placeholder="Search" aria-label="Search">-->
+                    <!--<button class="" type="submit">Search</button>-->
+                <!--</form>-->
+            </div>
             <div class="inputsForAdd">
                 <form id="form">
-                    <label>Movie Title: </label>
-                    <input id='movieTitle' type="text" class="pl-2">
-                    <label>Movie Rating: </label>
-                    <input id='movieRating' type="text">
-                    <button id="test" type="button">Add Movie</button>
+                    <input id='movieTitle' type="text" class="pl-2" placeholder="Add Movie Title" required>
+                    <input id='movieRating' type="number" class="pl-2" name="quantity" min="1" max="5" placeholder="Rating" style="width:100px" required>
+                    <input id='movieGenre' type="text" class="pl-2" placeholder="Add Movie Genre" required>
+                    <button id="addMovie" type="submit">Add Movie</button>
                 </form>
             </div>
-            <div class="JsonTable"></div>
+            <div class="JsonTable mb-2"></div>
         </div>
         <div class="seats"></div>
     </div>
